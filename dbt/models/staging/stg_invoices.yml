@@ -1,0 +1,41 @@
+version: 2
+
+models:
+  - name: stg_invoices
+    description: >
+      Cleaned and typed view of raw invoice records. No business logic —
+      only type casting, trimming, and null normalization.
+    columns:
+      - name: invoice_id
+        description: Unique identifier for the invoice
+        tests:
+          - not_null
+          - unique
+      - name: vendor_name
+        tests:
+          - not_null
+      - name: vendor_id
+        tests:
+          - not_null
+      - name: invoice_date
+        tests:
+          - not_null
+      - name: due_date
+        tests:
+          - not_null
+      - name: amount
+        tests:
+          - not_null
+      - name: currency
+        tests:
+          - not_null
+          - accepted_values:
+              values: ["USD", "EUR", "GBP"]
+      - name: status
+        tests:
+          - not_null
+          - accepted_values:
+              values: ["paid", "pending"]
+      - name: created_at
+        tests:
+          - not_null

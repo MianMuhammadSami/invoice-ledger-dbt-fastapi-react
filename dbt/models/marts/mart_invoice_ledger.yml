@@ -1,0 +1,48 @@
+version: 2
+
+models:
+  - name: mart_invoice_ledger
+    description: >
+      Materialized table that serves as the stable, API-facing contract for the
+      invoice ledger feature. FastAPI reads exclusively from this table.
+      Schema changes here require a versioned API update.
+    columns:
+      - name: invoice_id
+        description: Unique invoice identifier
+        tests:
+          - not_null
+          - unique
+      - name: vendor_name
+        tests:
+          - not_null
+      - name: vendor_id
+        tests:
+          - not_null
+      - name: invoice_date
+        tests:
+          - not_null
+      - name: due_date
+        tests:
+          - not_null
+      - name: amount
+        tests:
+          - not_null
+      - name: currency
+        tests:
+          - not_null
+      - name: status
+        tests:
+          - not_null
+          - accepted_values:
+              values: ["paid", "pending"]
+      - name: is_overdue
+        tests:
+          - not_null
+      - name: amount_category
+        tests:
+          - not_null
+          - accepted_values:
+              values: ["small", "medium", "large"]
+      - name: created_at
+        tests:
+          - not_null

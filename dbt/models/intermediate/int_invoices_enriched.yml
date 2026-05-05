@@ -1,0 +1,21 @@
+version: 2
+
+models:
+  - name: int_invoices_enriched
+    description: >
+      Enriched invoice records with derived business logic fields.
+      is_overdue, days_past_due, days_until_due, and amount_category
+      are all computed here — never in the API layer.
+    columns:
+      - name: invoice_id
+        tests:
+          - not_null
+          - unique
+      - name: is_overdue
+        tests:
+          - not_null
+      - name: amount_category
+        tests:
+          - not_null
+          - accepted_values:
+              values: ["small", "medium", "large"]

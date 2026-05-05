@@ -1,0 +1,68 @@
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: invoice_ledger
+      POSTGRES_USER: ledger
+      POSTGRES_PASSWORD: ledger_pass
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ledger -d invoice_ledger"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+  app:
+    build:
+      context: ./backend
+    ports:
+      - "8000:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgresql://ledger:ledger_pass@db:5432/invoice_ledger
+      REDIS_URL: redis://redis:6379/0
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+
+  frontend:
+    build:
+      context: ./frontend
+      target: dev
+    ports:
+      - "5173:5173"
+    environment:
+      VITE_API_URL: http://localhost:8000
+    depends_on:
+      - app
+
+  dbt:
+    build:
+      context: ./dbt
+    volumes:
+      - ./dbt:/dbt
+    environment:
+      DBT_HOST: db
+      DBT_PORT: "5432"
+      DBT_USER: ledger
+      DBT_PASSWORD: ledger_pass
+      DBT_DB: invoice_ledger
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  pgdata:

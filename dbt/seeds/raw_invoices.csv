@@ -1,0 +1,56 @@
+invoice_id,vendor_name,vendor_id,invoice_date,due_date,amount,currency,status,description,created_at
+INV-001,Acme Corp,VND-001,2026-01-15,2026-02-14,12500.00,USD,paid,Office supplies Q1,2026-01-15T09:00:00
+INV-002,Globex Inc,VND-002,2026-01-20,2026-02-19,7800.50,USD,paid,Software licenses annual,2026-01-20T10:30:00
+INV-003,Initech LLC,VND-003,2026-02-01,2026-03-02,45000.00,USD,pending,Cloud infrastructure services,2026-02-01T08:00:00
+INV-004,Umbrella Corp,VND-004,2026-02-10,2026-03-11,3200.75,USD,pending,Security consulting retainer,2026-02-10T14:00:00
+INV-005,Stark Industries,VND-005,2026-02-14,2026-03-15,98000.00,USD,paid,Engineering services Q1,2026-02-14T11:00:00
+INV-006,Acme Corp,VND-001,2026-03-01,2026-04-01,6750.00,USD,pending,Office equipment rental,2026-03-01T09:15:00
+INV-007,Globex Inc,VND-002,2026-03-05,2026-04-04,22100.00,USD,paid,API integration services,2026-03-05T13:00:00
+INV-008,Initech LLC,VND-003,2026-03-15,2026-05-14,8500.00,USD,pending,IT support monthly,2026-03-15T10:00:00
+INV-009,Wayne Enterprises,VND-006,2026-03-20,2026-04-19,54300.00,USD,paid,Legal advisory services,2026-03-20T08:30:00
+INV-010,Umbrella Corp,VND-004,2026-03-25,2026-04-24,1890.00,USD,pending,Lab equipment calibration,2026-03-25T15:00:00
+INV-011,Stark Industries,VND-005,2026-04-01,2026-05-31,76200.00,USD,pending,R&D collaboration Q2,2026-04-01T09:00:00
+INV-012,Acme Corp,VND-001,2026-04-05,2026-05-04,11450.00,USD,paid,Facility maintenance,2026-04-05T11:30:00
+INV-013,Wayne Enterprises,VND-006,2026-04-10,2026-05-10,29800.00,USD,pending,Compliance audit services,2026-04-10T10:00:00
+INV-014,Pied Piper Inc,VND-007,2026-04-12,2026-05-11,4600.00,USD,paid,Data compression licensing,2026-04-12T14:00:00
+INV-015,Globex Inc,VND-002,2026-04-15,2026-06-14,33750.00,USD,pending,Infrastructure upgrade phase 2,2026-04-15T09:00:00
+INV-016,Initech LLC,VND-003,2026-04-18,2026-04-30,9200.00,USD,pending,Network security assessment,2026-04-18T16:00:00
+INV-017,Pied Piper Inc,VND-007,2026-04-20,2026-05-20,18400.00,USD,pending,Platform development sprint,2026-04-20T10:00:00
+INV-018,Wayne Enterprises,VND-006,2026-04-22,2026-05-21,5100.00,USD,paid,Board meeting catering,2026-04-22T09:00:00
+INV-019,Hooli Corp,VND-008,2026-04-25,2026-05-25,42000.00,USD,pending,Enterprise SaaS subscription,2026-04-25T11:00:00
+INV-020,Umbrella Corp,VND-004,2026-04-27,2026-05-02,7650.00,USD,pending,Biotech reagents supply,2026-04-27T13:00:00
+INV-021,Acme Corp,VND-001,2026-04-28,2026-05-28,15800.00,USD,pending,Marketing materials printing,2026-04-28T14:00:00
+INV-022,Hooli Corp,VND-008,2026-04-30,2026-05-30,88500.00,USD,paid,Cloud computing annual plan,2026-04-30T09:00:00
+INV-023,Stark Industries,VND-005,2026-05-01,2026-05-15,23100.00,USD,pending,Prototype manufacturing,2026-05-01T10:00:00
+INV-024,Pied Piper Inc,VND-007,2026-05-02,2026-04-28,3450.00,USD,pending,Algorithm optimization work,2026-05-02T11:00:00
+INV-025,Globex Inc,VND-002,2026-05-03,2026-06-02,61750.00,USD,pending,Data center expansion,2026-05-03T09:30:00
+INV-026,Cyberdyne Systems,VND-009,2026-01-08,2026-02-07,67800.00,USD,paid,Robotics R&D phase 1,2026-01-08T09:00:00
+INV-027,Soylent Corp,VND-010,2026-01-22,2026-02-21,4200.00,USD,paid,Nutritional supplement supply,2026-01-22T11:00:00
+INV-028,Oscorp,VND-011,2026-02-03,2026-03-04,28500.00,USD,pending,Chemical compound research,2026-02-03T14:00:00
+INV-029,Aperture Science,VND-012,2026-02-08,2026-03-09,95000.00,USD,paid,Portal technology licensing,2026-02-08T10:00:00
+INV-030,Cyberdyne Systems,VND-009,2026-02-15,2026-03-16,12300.00,USD,pending,Neural network consulting,2026-02-15T09:00:00
+INV-031,Wayne Enterprises,VND-006,2026-02-20,2026-03-21,43700.00,USD,paid,Infrastructure maintenance Q1,2026-02-20T13:00:00
+INV-032,Soylent Corp,VND-010,2026-02-25,2026-03-26,8900.00,USD,pending,Packaging materials Q1,2026-02-25T10:00:00
+INV-033,Hooli Corp,VND-008,2026-03-02,2026-04-01,156000.00,USD,paid,Enterprise platform upgrade,2026-03-02T09:00:00
+INV-034,Oscorp,VND-011,2026-03-08,2026-04-07,19800.00,USD,pending,Lab equipment rental,2026-03-08T14:00:00
+INV-035,Aperture Science,VND-012,2026-03-12,2026-04-11,72400.00,USD,paid,Testing facility services,2026-03-12T11:00:00
+INV-036,Acme Corp,VND-001,2026-03-18,2026-04-17,5650.00,USD,pending,Stationery and office supplies,2026-03-18T09:00:00
+INV-037,Initech LLC,VND-003,2026-03-22,2026-04-21,31200.00,USD,paid,Software development sprint 3,2026-03-22T10:00:00
+INV-038,Cyberdyne Systems,VND-009,2026-03-28,2026-04-27,88600.00,USD,pending,AI model training services,2026-03-28T13:00:00
+INV-039,Stark Industries,VND-005,2026-04-02,2026-05-02,215000.00,USD,pending,Armor plating materials,2026-04-02T09:00:00
+INV-040,Soylent Corp,VND-010,2026-04-06,2026-06-05,14700.00,USD,pending,Distribution logistics Q2,2026-04-06T11:00:00
+INV-041,Globex Inc,VND-002,2026-04-09,2026-05-09,47300.00,USD,pending,Data analytics platform,2026-04-09T10:00:00
+INV-042,Aperture Science,VND-012,2026-04-11,2026-05-11,9800.00,USD,pending,Test chamber maintenance,2026-04-11T14:00:00
+INV-043,Wayne Enterprises,VND-006,2026-04-14,2026-05-14,63500.00,USD,pending,Security system upgrade,2026-04-14T09:00:00
+INV-044,Oscorp,VND-011,2026-04-16,2026-05-16,22100.00,USD,pending,Genetic research materials,2026-04-16T13:00:00
+INV-045,Cyberdyne Systems,VND-009,2026-04-19,2026-06-18,134500.00,USD,pending,Autonomous systems hardware,2026-04-19T10:00:00
+INV-046,Initech LLC,VND-003,2026-04-21,2026-05-21,17600.00,USD,pending,DevOps tooling license,2026-04-21T11:00:00
+INV-047,Acme Corp,VND-001,2026-04-23,2026-05-23,8300.00,USD,pending,Hardware maintenance kit,2026-04-23T09:00:00
+INV-048,Globex Inc,VND-002,2026-04-26,2026-05-26,54900.00,USD,paid,Network infrastructure Q2,2026-04-26T14:00:00
+INV-049,Soylent Corp,VND-010,2026-04-29,2026-05-29,6400.00,USD,pending,Food processing supplies,2026-04-29T10:00:00
+INV-050,Aperture Science,VND-012,2026-05-01,2026-05-31,38900.00,USD,pending,Containment unit fabrication,2026-05-01T09:00:00
+INV-051,Oscorp,VND-011,2026-05-02,2026-06-01,91200.00,USD,pending,Advanced materials research,2026-05-02T11:00:00
+INV-052,Wayne Enterprises,VND-006,2026-05-03,2026-06-02,27800.00,USD,pending,Fleet vehicle maintenance,2026-05-03T14:00:00
+INV-053,Stark Industries,VND-005,2026-05-04,2026-06-03,182000.00,USD,pending,Arc reactor components,2026-05-04T09:00:00
+INV-054,Hooli Corp,VND-008,2026-05-04,2026-05-19,33400.00,USD,pending,SaaS platform Q2 renewal,2026-05-04T13:00:00
+INV-055,Cyberdyne Systems,VND-009,2026-05-05,2026-06-04,76100.00,USD,pending,Quantum computing cluster,2026-05-05T08:00:00
