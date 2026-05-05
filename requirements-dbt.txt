@@ -1,0 +1,2 @@
+# Local editor + CLI only; matches dbt/Dockerfile. Does not affect Docker images.
+dbt-postgres==1.8.2

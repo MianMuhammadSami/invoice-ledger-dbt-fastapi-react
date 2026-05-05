@@ -4,6 +4,11 @@ A self-contained vertical slice of an "Invoice Ledger" feature, built with a str
 
 ---
 
+![Invoice Ledger dashboard](docs/frontend.png)
+![int_invoices_enriched](docs/1.png)
+![mart_invoices_legder](docs/2.png)
+![stg_invoices](docs/3.png)
+
 ## Stack
 
 | Layer      | Technology            | Role                                  |
