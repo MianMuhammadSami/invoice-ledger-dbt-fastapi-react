@@ -1,4 +1,4 @@
-# Invoice Ledger — Walking Skeleton
+# Invoice Ledger
 
 A self-contained vertical slice of an "Invoice Ledger" feature, built with a strict three-layer data pipeline, a read-only versioned API, and a type-safe React frontend. Every boundary is intentional; every side effect is either absent or explicit.
 
@@ -6,14 +6,14 @@ A self-contained vertical slice of an "Invoice Ledger" feature, built with a str
 
 ## Stack
 
-| Layer      | Technology              | Role                                      |
-|------------|-------------------------|-------------------------------------------|
-| Data       | dbt + PostgreSQL 16     | Transformation pipeline (seed → mart)     |
-| Backend    | FastAPI + Pydantic v2   | Read-only contract layer                  |
-| Frontend   | React 18 + TypeScript   | Presentation only                         |
-| Infra      | Docker Compose          | Service orchestration                     |
-| Migrations | Alembic                 | Schema lifecycle management               |
-| Cache      | Redis 7                 | Future-proofed; unused in v1              |
+| Layer      | Technology            | Role                                  |
+| ---------- | --------------------- | ------------------------------------- |
+| Data       | dbt + PostgreSQL 16   | Transformation pipeline (seed → mart) |
+| Backend    | FastAPI + Pydantic v2 | Read-only contract layer              |
+| Frontend   | React 18 + TypeScript | Presentation only                     |
+| Infra      | Docker Compose        | Service orchestration                 |
+| Migrations | Alembic               | Schema lifecycle management           |
+| Cache      | Redis 7               | Future-proofed; unused in v1          |
 
 ---
 
@@ -21,7 +21,7 @@ A self-contained vertical slice of an "Invoice Ledger" feature, built with a str
 
 ### Load Flow — `make dbt-run`
 
-```
+```text
 ┌─────────────────────────────────────────────────────────────────────┐
 │                        dbt/seeds/                                   │
 │                     raw_invoices.csv                                │
@@ -64,7 +64,7 @@ A self-contained vertical slice of an "Invoice Ledger" feature, built with a str
 
 ### Read Flow — Browser → API → Database
 
-```
+```text
  ┌──────────────────────────────────────────────────────────┐
  │  React (port 5173)                                        │
  │                                                           │
@@ -81,9 +81,9 @@ A self-contained vertical slice of an "Invoice Ledger" feature, built with a str
  ┌──────────────────────────────────────────────────────────┐
  │  FastAPI (port 8000)                                      │
  │                                                           │
- │  GET /v1/invoices        paginate + filter               │
+ │  GET /v1/invoices          paginate + filter             │
  │  GET /v1/invoices/summary  aggregate counts + amounts    │
- │  GET /v1/invoices/{id}   single record                   │
+ │  GET /v1/invoices/{id}     single record                 │
  │                                                           │
  │  Pydantic InvoiceResponse strips / rejects anything      │
  │  that doesn't match the contract before sending JSON.    │
@@ -128,7 +128,7 @@ make dbt-run
 
 ## Folder Structure
 
-```
+```text
 .
 ├── dbt/                        # Data transformation pipeline
 │   ├── seeds/raw_invoices.csv  # Source-of-truth mock data
@@ -207,12 +207,12 @@ The `model_config = {"from_attributes": True}` setting means SQLAlchemy row mapp
 
 ### 7. How is Idempotency Guaranteed?
 
-| Operation | Idempotency mechanism |
-|---|---|
-| `make migrate` | `CREATE SCHEMA IF NOT EXISTS` + Alembic's revision tracking |
-| `make dbt-run` (seed) | dbt seeds drop-and-recreate by default; adding `--full-refresh` is explicit |
+| Operation            | Idempotency mechanism                                             |
+| -------------------- | ----------------------------------------------------------------- |
+| `make migrate`       | `CREATE SCHEMA IF NOT EXISTS` + Alembic's revision tracking      |
+| `make dbt-run` (seed)| dbt seeds drop-and-recreate by default; `--full-refresh` is explicit |
 | `make dbt-run` (run) | Mart is `materialized='table'` — dbt drops and recreates atomically |
-| `make server-up` | `docker compose up -d` is idempotent; existing containers are reused |
+| `make server-up`     | `docker compose up -d` is idempotent; existing containers reused |
 
 Running `make dbt-run` twice produces the same mart state both times. No row duplication, no schema drift.
 
@@ -224,21 +224,21 @@ Redis is included at the infrastructure level but not wired into FastAPI yet. Th
 
 ## API Reference
 
-| Method | Path | Description |
-|--------|------|-------------|
-| GET | `/v1/invoices` | Paginated invoice list; filter by `status`, search by `search` |
-| GET | `/v1/invoices/summary` | Aggregate counts and amounts by status |
-| GET | `/v1/invoices/{id}` | Single invoice by ID |
-| GET | `/health` | Liveness check |
+| Method | Path                    | Description                                               |
+| ------ | ----------------------- | --------------------------------------------------------- |
+| GET    | `/v1/invoices`          | Paginated invoice list; filter by `status`, search by `search` |
+| GET    | `/v1/invoices/summary`  | Aggregate counts and amounts by status                    |
+| GET    | `/v1/invoices/{id}`     | Single invoice by ID                                      |
+| GET    | `/health`               | Liveness check                                            |
 
 ### Query Parameters (`/v1/invoices`)
 
-| Param | Values | Default |
-|-------|--------|---------|
-| `status` | `paid` \| `pending` \| `overdue` | (all) |
-| `search` | vendor name substring | (none) |
-| `page` | integer ≥ 1 | `1` |
-| `page_size` | 1–100 | `20` |
+| Param       | Values                              | Default |
+| ----------- | ----------------------------------- | ------- |
+| `status`    | `paid` \| `pending` \| `overdue`   | (all)   |
+| `search`    | vendor name substring               | (none)  |
+| `page`      | integer ≥ 1                         | `1`     |
+| `page_size` | 1–100                               | `20`    |
 
 > `overdue` is a **derived** status: it matches rows where `is_overdue = true` (pending invoices whose `due_date < current_date`). It is not a raw field in the source data — this distinction is the whole point of the intermediate dbt layer.
 
@@ -259,11 +259,11 @@ make clean        # Tear down containers and volumes (destructive)
 
 ## dbt Data Flow
 
-```
+```text
 seeds/raw_invoices.csv
         │
         ▼
-raw.raw_invoices          ← dbt seed (25 mock invoices)
+raw.raw_invoices          ← dbt seed (55 mock invoices)
         │
         ▼
 staging.stg_invoices      ← VIEW: type casting only
@@ -285,10 +285,10 @@ React frontend             ← TypeScript interfaces, no business logic
 
 ## Mock Data
 
-25 invoices across 8 vendors (Acme Corp, Globex Inc, Initech LLC, Umbrella Corp, Stark Industries, Wayne Enterprises, Pied Piper Inc, Hooli Corp). Amounts range from \$1,890 to \$98,000. Dates span January–May 2026, producing a realistic mix:
+55 invoices across 12 vendors (Acme Corp, Globex Inc, Initech LLC, Umbrella Corp, Stark Industries, Wayne Enterprises, Pied Piper Inc, Hooli Corp, Cyberdyne Systems, Soylent Corp, Oscorp, Aperture Science). Amounts range from \$1,890 to \$215,000. Dates span January–May 2026, producing a realistic mix:
 
-- **9 paid** invoices
-- **9 genuinely pending** (due date in the future)
-- **7 overdue** (pending status, but `due_date < current_date`)
+- **17 paid** invoices
+- **24 genuinely pending** (due date in the future)
+- **14 overdue** (pending status, but `due_date < current_date`)
 
 The overdue classification is entirely computed by dbt — the source CSV has only `paid` and `pending` statuses.
