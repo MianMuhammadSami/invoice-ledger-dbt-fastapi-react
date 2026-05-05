@@ -2,6 +2,28 @@
 
 A self-contained vertical slice of an "Invoice Ledger" feature, built with a strict three-layer data pipeline, a read-only versioned API, and a type-safe React frontend. Every boundary is intentional; every side effect is either absent or explicit.
 
+
+---
+
+## Quick Start
+
+```bash
+# 1. Bring up all long-running services
+make server-up
+
+# 2. Create the PostgreSQL schemas (one-time migration)
+make migrate
+
+# 3. Seed mock data and run all dbt models
+make dbt-run
+
+# Frontend:  http://localhost:5173
+# API docs:  http://localhost:8000/docs
+# API:       http://localhost:8000/v1/invoices
+```
+
+> **Order matters.** `migrate` creates the schemas that dbt writes into. `dbt-run` must follow before the frontend has anything to display.
+
 ---
 
 ![Invoice Ledger dashboard](docs/frontend.png)
@@ -110,26 +132,6 @@ A self-contained vertical slice of an "Invoice Ledger" feature, built with a str
 
 ---
 
-## Quick Start
-
-```bash
-# 1. Bring up all long-running services
-make server-up
-
-# 2. Create the PostgreSQL schemas (one-time migration)
-make migrate
-
-# 3. Seed mock data and run all dbt models
-make dbt-run
-
-# Frontend:  http://localhost:5173
-# API docs:  http://localhost:8000/docs
-# API:       http://localhost:8000/v1/invoices
-```
-
-> **Order matters.** `migrate` creates the schemas that dbt writes into. `dbt-run` must follow before the frontend has anything to display.
-
----
 
 ## Folder Structure
 
